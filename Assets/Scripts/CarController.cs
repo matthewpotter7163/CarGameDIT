@@ -67,6 +67,13 @@ public class CarController : MonoBehaviour
                 w.steerAngle = ackermannAngleRight;
             }
         }
+
+
+       /* while (timerOn = true)
+        {
+            //lapTime += Time.deltaTime;
+            Debug.Log("Time +1");
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)
@@ -76,13 +83,6 @@ public class CarController : MonoBehaviour
         {
             timerOn = true;
             Debug.Log("timer start");
-
-            while (timerOn = true)
-            {
-                lapTime += Time.deltaTime;
-                
-            }
-
         }
 
         else
@@ -90,6 +90,5 @@ public class CarController : MonoBehaviour
             timerOn = false;
         }
 
-
-        }
     }
+                                }
