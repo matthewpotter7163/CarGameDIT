@@ -7,20 +7,19 @@ using TMPro;
 public class Wheel : MonoBehaviour
 {
 
-    public TextMeshProUGUI speed;
-    public TextMeshProUGUI RPM;
+    public TextMeshProUGUI speed; // Onscreen text for speed
+    public TextMeshProUGUI RPM; // Onscreen text for RPM
     public TextMeshProUGUI Torque;
-    public TextMeshProUGUI stopwatch;
-
-    private float lapTime = 0.0f;
-    public Collider startCollider;
+    public TextMeshProUGUI stopwatch; // On screen text for timer
+    private float lapTime = 0.0f; // variable for laptime 
+    
 
     [SerializeField] private Rigidbody rb;
 
-    public bool wheelFL;
-    public bool wheelFR;
-    public bool wheelRL;
-    public bool wheelRR;
+    public bool wheelFL; // Front Left wheel
+    public bool wheelFR; // Front right wheel
+    public bool wheelRL; // Rear Left wheel
+    public bool wheelRR; // Rear Right wheel
 
     [Header("Suspension")]
     public float restLength;
