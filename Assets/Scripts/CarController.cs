@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Threading;
 
 public class CarController : MonoBehaviour
 {
@@ -27,7 +28,11 @@ public class CarController : MonoBehaviour
     [SerializeField] private float ackermannAngleRight;
 
     public bool timerOn = false;
+    public bool timerSplit = false;
+    public int lapCount = 0;
+    
     private float lapTime = 0.0f;
+    private bool checkpoint1 = false;
 
     private void Start()
     {
@@ -70,11 +75,11 @@ public class CarController : MonoBehaviour
         }
 
 
-       /* while (timerOn = true)
-        {
-            //lapTime += Time.deltaTime;
-            Debug.Log("Time +1");
-        }*/
+        /* while (timerOn = true)
+         {
+             //lapTime += Time.deltaTime;
+             Debug.Log("Time +1");
+         }*/
     }
 
     private void OnTriggerEnter(Collider other)
@@ -82,14 +87,58 @@ public class CarController : MonoBehaviour
 
         if (other.CompareTag("TimerTrigger"))
         {
-            timerOn = true;
-            Debug.Log("timer start");
+
+            
+            if (lapCount == 0)
+            {
+                if (checkpoint1 == true)
+                {
+                    timerOn = false;
+                }
+
+                else
+                {
+                    timerOn = true;
+                    checkpoint1 = false;
+                    lapCount = 1;
+                    Debug.Log("timer on");
+                    Debug.Log("lapCount");
+                }
+
+            }
+
+            else if (lapCount > 0) {
+
+                if (checkpoint1 == true)
+                {
+                    timerOn = false;
+                    timerSplit = true;
+
+                    timerOn = true;
+                    timerSplit = false;
+                }
+
+                else
+                {
+                    timerOn = true;
+                    timerSplit = true;
+                    checkpoint1 = false;
+                    lapCount = lapCount + 1;
+                    Debug.Log("timer on");
+                    Debug.Log("lapCount");
+                    
+                }
+
+            }
+            
+
+            
         }
 
-        else
-        {
-            timerOn = false;
+
+        if (other.CompareTag("Checkpoint1")) {
+            checkpoint1 = true;
         }
 
     }
-                                }
+}                         

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Car
   - TimerTrigger
+  - Checkpoint1
   layers:
   - Default
   - TransparentFX
