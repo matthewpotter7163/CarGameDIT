@@ -30,7 +30,7 @@ public class CarController : MonoBehaviour
     public bool timerOn = false;
     public bool timerSplit = false;
     public int lapCount = 0;
-    
+
     private float lapTime = 0.0f;
     private bool checkpoint1 = false;
 
@@ -74,12 +74,6 @@ public class CarController : MonoBehaviour
             }
         }
 
-
-        /* while (timerOn = true)
-         {
-             //lapTime += Time.deltaTime;
-             Debug.Log("Time +1");
-         }*/
     }
 
     private void OnTriggerEnter(Collider other)
@@ -88,57 +82,30 @@ public class CarController : MonoBehaviour
         if (other.CompareTag("TimerTrigger"))
         {
 
-            
-            if (lapCount == 0)
+
+            if (checkpoint1 == true)
             {
-                if (checkpoint1 == true)
-                {
-                    timerOn = false;
-                }
-
-                else
-                {
-                    timerOn = true;
-                    checkpoint1 = false;
-                    lapCount = 1;
-                    Debug.Log("timer on");
-                    Debug.Log("lapCount");
-                }
+                timerOn = false;
+                
+                //timerSplit = true;
 
             }
 
-            else if (lapCount > 0) {
-
-                if (checkpoint1 == true)
-                {
-                    timerOn = false;
-                    timerSplit = true;
-
-                    timerOn = true;
-                    timerSplit = false;
-                }
-
-                else
-                {
-                    timerOn = true;
-                    timerSplit = true;
-                    checkpoint1 = false;
-                    lapCount = lapCount + 1;
-                    Debug.Log("timer on");
-                    Debug.Log("lapCount");
-                    
-                }
-
+            else
+            {
+                timerOn = true;
+                checkpoint1 = false;
+                lapCount = 1;
+                Debug.Log("timer on");
+                Debug.Log("lapCount");
             }
-            
 
-            
         }
 
-
-        if (other.CompareTag("Checkpoint1")) {
+        if (other.CompareTag("Checkpoint1"))
+        {
             checkpoint1 = true;
         }
 
     }
-}                         
+}

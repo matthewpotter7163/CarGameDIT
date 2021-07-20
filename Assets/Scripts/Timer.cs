@@ -7,7 +7,7 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     private bool timerStatus;
-    private TextMeshProUGUI timerText;
+    public TextMeshProUGUI timerText;
     private float gameTime;
     public float timerSpeed = 1.0f; // for debug purposes
     public GameObject car;
@@ -43,12 +43,12 @@ public class Timer : MonoBehaviour
         if (timerSplit == true) {
             lapTimes.Add(timerText.text); 
             timerText.text = ("00:00:000");
-
+            timerSplit = false;
             foreach (string laptime in lapTimes) {
                 Debug.Log(laptime);
             }
 
-            timerSplit = false;
+            
             
         }
         

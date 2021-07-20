@@ -236,7 +236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &34029492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -311,6 +311,7 @@ MonoBehaviour:
   ackermannAngleRight: 0
   timerOn: 0
   timerSplit: 0
+  lapCount: 0
 --- !u!1 &82847384
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &281911449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,6 +645,7 @@ MonoBehaviour:
   ackermannAngleRight: 0
   timerOn: 0
   timerSplit: 0
+  lapCount: 0
 --- !u!54 &281911450
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1279,7 +1281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eebc662213dbf74a82051068857da87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {fileID: 0}
+  speed: {fileID: 1503625953}
   RPM: {fileID: 0}
   Torque: {fileID: 0}
   stopwatch: {fileID: 0}
@@ -1288,8 +1290,8 @@ MonoBehaviour:
   wheelFR: 0
   wheelRL: 0
   wheelRR: 0
-  restLength: 0.3
-  springTravel: 0
+  restLength: 1
+  springTravel: 1.5
   springStiffness: 30000
   damperStiffness: 3000
   Fh: 0
@@ -1315,7 +1317,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   engineRPM: 0
-  wheelTransform: {fileID: 0}
+  wheelTransform: {fileID: 707775725}
   wheelSpeed: 0
 --- !u!1 &424396615
 GameObject:
@@ -1675,7 +1677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eebc662213dbf74a82051068857da87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {fileID: 0}
+  speed: {fileID: 1503625953}
   RPM: {fileID: 0}
   Torque: {fileID: 0}
   stopwatch: {fileID: 0}
@@ -1684,8 +1686,8 @@ MonoBehaviour:
   wheelFR: 0
   wheelRL: 1
   wheelRR: 0
-  restLength: 0.3
-  springTravel: 0
+  restLength: 1
+  springTravel: 1.5
   springStiffness: 30000
   damperStiffness: 3000
   Fh: 0
@@ -1711,7 +1713,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   engineRPM: 0
-  wheelTransform: {fileID: 0}
+  wheelTransform: {fileID: 707775725}
   wheelSpeed: 0
 --- !u!1 &711914454
 GameObject:
@@ -1940,7 +1942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eebc662213dbf74a82051068857da87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {fileID: 0}
+  speed: {fileID: 1503625953}
   RPM: {fileID: 0}
   Torque: {fileID: 0}
   stopwatch: {fileID: 0}
@@ -1949,8 +1951,8 @@ MonoBehaviour:
   wheelFR: 0
   wheelRL: 0
   wheelRR: 1
-  restLength: 0.3
-  springTravel: 0
+  restLength: 1
+  springTravel: 1.5
   springStiffness: 30000
   damperStiffness: 3000
   Fh: 0
@@ -1976,7 +1978,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   engineRPM: 0
-  wheelTransform: {fileID: 0}
+  wheelTransform: {fileID: 840017069}
   wheelSpeed: 0
 --- !u!4 &840017069
 Transform:
@@ -2889,7 +2891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eebc662213dbf74a82051068857da87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {fileID: 0}
+  speed: {fileID: 1503625953}
   RPM: {fileID: 0}
   Torque: {fileID: 0}
   stopwatch: {fileID: 0}
@@ -2898,8 +2900,8 @@ MonoBehaviour:
   wheelFR: 1
   wheelRL: 0
   wheelRR: 0
-  restLength: 0.3
-  springTravel: 0
+  restLength: 1
+  springTravel: 1.5
   springStiffness: 30000
   damperStiffness: 3000
   Fh: 0
@@ -2925,7 +2927,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   engineRPM: 0
-  wheelTransform: {fileID: 0}
+  wheelTransform: {fileID: 1312500205}
   wheelSpeed: 0
 --- !u!1 &1363941363
 GameObject:
@@ -3286,12 +3288,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57183abaae265c489f2a3b16f1de8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 34029493}
+  target: {fileID: 281911452}
   distance: 10
   height: 5
   heightDamping: 2
   lookAtHeight: 0
-  parentRigidbody: {fileID: 34029494}
+  parentRigidbody: {fileID: 281911450}
   rotationSnapTime: 0.3
   distanceSnapTime: 0
   distanceMultiplier: 0
@@ -4124,6 +4126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760bbcd670f82f84e8790b5cd7918306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
   timerSpeed: 1
   car: {fileID: 0}
 --- !u!1 &1679856363

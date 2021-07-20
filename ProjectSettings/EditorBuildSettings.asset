@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Scenes/CityTrack.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
     path: Assets/Scenes/0StartScene.unity
@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1ScoreboardScene.unity
     guid: 8db1e477bd534bf4187e7191f42297ff
+  - enabled: 1
+    path: Assets/Scenes/ForestTrack.unity
+    guid: 996586aef5efbe5468016102c2e21d10
+  - enabled: 1
+    path: Assets/Scenes/CarSelection.unity
+    guid: d39762ce698f3ff449edfc169883a0b0
+  - enabled: 1
+    path: Assets/Scenes/TrackSelection.unity
+    guid: 8536375daa3524145931c28b4f589170
   m_configObjects: {}
