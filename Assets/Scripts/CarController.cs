@@ -34,9 +34,18 @@ public class CarController : MonoBehaviour
     private float lapTime = 0.0f;
     private bool checkpoint1 = false;
 
+    public bool r32IsActive = false;
+
     private void Start()
     {
         lapTime = 0.0f;
+
+        if (this.isActiveAndEnabled)
+        {
+            r32IsActive = true;
+            Debug.Log("r32 is active"); 
+        }
+
     }
 
 
