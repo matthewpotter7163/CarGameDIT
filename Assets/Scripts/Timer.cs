@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         timerText = GetComponent<TextMeshProUGUI>();
         //bool ts = bool.Find("timerOn");

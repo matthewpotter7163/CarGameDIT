@@ -11,7 +11,7 @@ public class CarSelection : MonoBehaviour
     public Button roadsterButton;
     public Button backButton;
 
-    public string carSelection; 
+    public static int carSelection; 
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +24,8 @@ public class CarSelection : MonoBehaviour
         
 
         // Add a listener for a click event for each button
-        r32Button.onClick.AddListener(delegate { Debug.Log("r32"); goToTrackSelection(); carSelection = "r32";  });
-        roadsterButton.onClick.AddListener(delegate { Debug.Log("roadster"); goToTrackSelection(); carSelection = "roadster"; });
+        r32Button.onClick.AddListener(delegate { Debug.Log("r32"); goToTrackSelection(); carSelection = 0;  });
+        roadsterButton.onClick.AddListener(delegate { Debug.Log("roadster"); goToTrackSelection(); carSelection = 1; });
         backButton.onClick.AddListener(delegate { Debug.Log("Back"); backToMenu(); });
         
     }

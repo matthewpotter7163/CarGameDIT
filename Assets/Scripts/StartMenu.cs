@@ -24,6 +24,11 @@ public class StartMenu : MonoBehaviour
     public bool nextSongSend;
     public bool prevSongSend;
 
+    
+    private Image playButtonImage;
+    public bool pauseImage = true; //true - show pause image, false - show play image
+    public Sprite[] playSprites;
+
     private void Awake()
     {
         
@@ -45,13 +50,14 @@ public class StartMenu : MonoBehaviour
 
         // Add a listener for a click event for each button
         startButton.onClick.AddListener(delegate { Debug.Log("Start"); StartGame(); });
-        leaderboardButton.onClick.AddListener(delegate { Debug.Log("Leaderboard"); /*StartGame();*/ });
+        leaderboardButton.onClick.AddListener(delegate { Debug.Log("Leaderboard"); GoToLeaderboard(); });
         quitButton.onClick.AddListener(delegate { Debug.Log("Quit"); Application.Quit(); });
 
-        playMusicButton.onClick.AddListener(delegate { Debug.Log("play"); pauseMusicSend = PlayMusic();});
+        playMusicButton.onClick.AddListener(delegate { Debug.Log("play"); pauseMusicSend = PlayMusic(); PlayPauseImage(); });
         nextSongButton.onClick.AddListener(delegate { Debug.Log("next"); nextSongSend = NextSong(); });
         previousSongButton.onClick.AddListener(delegate { Debug.Log("previous"); prevSongSend = PrevSong();});
 
+        playButtonImage = playMusicButton.image;
     }
 
     private void Update()
@@ -60,10 +66,29 @@ public class StartMenu : MonoBehaviour
         
     }
 
+    private void PlayPauseImage() {
+
+        pauseImage = !pauseImage;
+
+        if (pauseImage)
+        {
+            playButtonImage.sprite = playSprites[0];
+        }
+
+        else if (pauseImage == false)
+        {
+            playButtonImage.sprite = playSprites[1];
+        }
+    }
+
     // Update is called once per frame
     private void StartGame()
     {
         SceneManager.LoadScene("CarSelection", LoadSceneMode.Single);
+    }
+
+    private void GoToLeaderboard() {
+        SceneManager.LoadScene("1ScoreboardScene", LoadSceneMode.Single);
     }
 
     private bool PlayMusic()

@@ -4,42 +4,40 @@ using UnityEngine;
 
 public class LoadScene : MonoBehaviour
 {
-    public GameObject r32;
-    public GameObject r32Camera;
-    public GameObject roadster;
-    public GameObject roadsterCamera;
+    public GameObject[] Cars;
+    public GameObject[] Cameras;
 
-    public string carLoad;
+    public int carSelectionLoad = 2;
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+
+        carSelectionLoad = CarSelection.carSelection;
+        Debug.Log(carSelectionLoad + "yes");
+
+        LoadCar(carSelectionLoad);
+    }
+
+
     void Start()
     {
-       
-            
+
         
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        carLoad = GameObject.Find("Canvas").GetComponent<CarSelection>().carSelection;
+        
 
-        if (carLoad == "r32")
-        {
-            r32.SetActive(true);
-            r32Camera.SetActive(true);
-            roadster.SetActive(false);
-            roadsterCamera.SetActive(false);
-        }
+    }
 
-        else if (carLoad == "roadster")
-        {
-            roadster.SetActive(true);
-            roadsterCamera.SetActive(true);
-            r32.SetActive(false);
-            r32Camera.SetActive(false);
-
-
-        }
+    public void LoadCar(int selection) {
+        Cars[selection].gameObject.SetActive(true);
+        Cameras[selection].gameObject.SetActive(true);
     }
 }

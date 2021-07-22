@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RandomiseMusic : MonoBehaviour
 {
@@ -19,17 +20,34 @@ public class RandomiseMusic : MonoBehaviour
     private AudioClip currentSong;
     private AudioClip prevSong;
 
+    private StartMenu startMenu;
+
+    private Button nextButton;
+    private Button prevButton;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.loop = false;
+
+        startMenu = GameObject.Find("Canvas").GetComponent<StartMenu>();
+
+        nextButton = startMenu.nextSongButton;
+        prevButton = startMenu.previousSongButton;
+
+        
+
     }
 
     void Update()
     {
-        musicStatusReceive = GameObject.Find("Canvas").GetComponent<StartMenu>().pauseMusicSend;
-        nextSongReceive = GameObject.Find("Canvas").GetComponent<StartMenu>().nextSongSend;
-        prevSongReceive = GameObject.Find("Canvas").GetComponent<StartMenu>().prevSongSend;
+        musicStatusReceive = startMenu.pauseMusicSend;
+        nextSongReceive =startMenu.nextSongSend;
+        prevSongReceive = startMenu.prevSongSend;
+
+       
+
+
 
         if (!audioSource.isPlaying)
         {
