@@ -28,7 +28,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float ackermannAngleRight;
 
     public bool timerOn = false;
-    public bool timerSplit = false;
+    //public bool timerSplit = false;
     public int lapCount = 0;
 
     private float lapTime = 0.0f;

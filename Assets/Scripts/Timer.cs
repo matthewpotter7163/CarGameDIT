@@ -13,6 +13,9 @@ public class Timer : MonoBehaviour
     public GameObject car;
 
     public ArrayList lapTimes = new ArrayList();
+
+    bool r32Active = false;
+    bool roadsterActive = false;
     
     
 
@@ -20,9 +23,22 @@ public class Timer : MonoBehaviour
     void Awake()
     {
         timerText = GetComponent<TextMeshProUGUI>();
-        //bool ts = bool.Find("timerOn");
+      
 
-        //bool timerStatus = GameObject.Find("R32 GTR").GetComponent<CarController>().timerOn;
+    }
+
+    void Start()
+    {
+        int activeCar = CarSelection.carSelection;
+
+        if (activeCar == 0)
+        {
+            r32Active = true;
+        }
+
+        else if (activeCar == 1) {
+            roadsterActive = true;
+        }
 
     }
 
@@ -32,26 +48,29 @@ public class Timer : MonoBehaviour
 
         
         bool timerStatus = GameObject.Find("R32 GTR").GetComponent<CarController>().timerOn;
-        bool timerSplit = GameObject.Find("R32 GTR").GetComponent<CarController>().timerSplit;
+        //bool timerSplit = GameObject.Find("R32 GTR").GetComponent<CarController>().timerSplit;
 
-        bool _timerStatusRoadster = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>().timerOnRoadster;
-        bool _timerSplitRoadster = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>().timerSplitRoadster;
+        //bool _timerStatusRoadster = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>().timerOnRoadster;
+        //bool _timerSplitRoadster = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>().timerSplitRoadster;
 
-        bool r32Active = GameObject.Find("R32 GTR").GetComponent<CarController>().r32IsActive;
-        bool roadsterActive = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>().roadsterIsActive;
-
+        //bool r32Active = GameObject.Find("R32 GTR").GetComponent<CarController>().r32IsActive;
+        //bool roadsterActive = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>().roadsterIsActive;
+        Debug.Log("r32 status:" + r32Active);
         if (r32Active == true)
         {
+
+
             if (timerStatus == true)
             {
                 gameTime += Time.deltaTime * timerSpeed;
                 string minutes = Mathf.Floor((gameTime % 3600) / 60).ToString("00");
-                string seconds = (gameTime % 60).ToString("00");
+                string seconds = Mathf.Floor((gameTime % 60)).ToString("00");
                 string milliseconds = Mathf.Floor((gameTime * 1000) % 1000).ToString("000");
                 timerText.text = ($"{minutes}:{seconds}:{milliseconds}");
             }
 
-            if (timerSplit == true)
+            
+            /*if (timerSplit == true)
             {
                 lapTimes.Add(timerText.text);
                 timerText.text = ("00:00:000");
@@ -61,45 +80,45 @@ public class Timer : MonoBehaviour
                     Debug.Log(laptime);
                 }
 
-
-
-            }
+            }*/
         }
 
-        else if (r32Active == false) {
+        else if (r32Active == false)
+        {
             Debug.Log("r32 is not active");
         }
-
+        
         if (roadsterActive == true)
         {
 
-            Debug.Log("Roadster is active");
-            if (_timerStatusRoadster == true)
+
+            if (timerStatus == true)
             {
                 gameTime += Time.deltaTime * timerSpeed;
                 string minutes = Mathf.Floor((gameTime % 3600) / 60).ToString("00");
-                string seconds = (gameTime % 60).ToString("00");
+                string seconds = Mathf.Floor((gameTime % 60)).ToString("00");
                 string milliseconds = Mathf.Floor((gameTime * 1000) % 1000).ToString("000");
                 timerText.text = ($"{minutes}:{seconds}:{milliseconds}");
             }
 
-            if (_timerSplitRoadster == true)
+            
+            /*if (timerSplit == true)
             {
                 lapTimes.Add(timerText.text);
                 timerText.text = ("00:00:000");
-                _timerSplitRoadster = false;
+                timerSplit = false;
                 foreach (string laptime in lapTimes)
                 {
                     Debug.Log(laptime);
                 }
-            }
+
+            }*/
         }
 
         else if (roadsterActive == false)
         {
             Debug.Log("roadster is not active");
         }
-
 
     }
 }
