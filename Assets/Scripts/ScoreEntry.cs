@@ -12,6 +12,7 @@ public class ScoreEntry : MonoBehaviour
     public TMP_Dropdown optionDropdown;
     public TMP_InputField nameInput;
     public Button submitButton;
+    public GameObject ScoreEntryPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,17 @@ public class ScoreEntry : MonoBehaviour
         submitButton.onClick.AddListener(delegate { Submit(); });
 
         dataManager = FindObjectOfType<ScoreboardDataManager>();
+
+        ScoreEntryPanel = gameObject;
+
+        ScoreEntryPanel.SetActive(false);
+    }
+
+    void Update() {
+        if (Timer.timerStatus == false) {
+            gameObject.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 
     void Submit()

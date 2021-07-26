@@ -23,6 +23,7 @@ public class MenuManager : MonoBehaviour
         // Open pause menu using 'esc' key press
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("esc pressed");
             DisplayPauseMenu();
         }
     }

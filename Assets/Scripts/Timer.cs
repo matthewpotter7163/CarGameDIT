@@ -6,7 +6,7 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    private bool timerStatus;
+    public static bool timerStatus;
     public TextMeshProUGUI timerText;
     private float gameTime;
     public float timerSpeed = 1.0f; // for debug purposes
@@ -68,6 +68,8 @@ public class Timer : MonoBehaviour
                 string milliseconds = Mathf.Floor((gameTime * 1000) % 1000).ToString("000");
                 timerText.text = ($"{minutes}:{seconds}:{milliseconds}");
             }
+
+            
 
             
             /*if (timerSplit == true)
