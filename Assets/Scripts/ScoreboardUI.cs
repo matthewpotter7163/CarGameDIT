@@ -12,6 +12,8 @@ public class ScoreboardUI : MonoBehaviour
     public Button mainMenuButton, clearButton;
     private ScoreboardDataManager sbDataManager;
     private string displayScore;
+    private string scoreStr;
+
 
     private void Start()
     {
@@ -29,6 +31,11 @@ public class ScoreboardUI : MonoBehaviour
         mainMenuButton.onClick.AddListener(delegate { CloseScoreboard(); });
         clearButton.onClick.AddListener(delegate { ClearScoreboard(); });
         SetupBoard();
+
+
+
+
+        
     }
 
     private void CloseScoreboard()
@@ -55,9 +62,49 @@ public class ScoreboardUI : MonoBehaviour
         {
             rankText.text = rankText.text + (i + 1).ToString() + "\n";
             nameText.text = nameText.text + tempDataList[i].name + "\n";
-            displayScore = 
-            scoreText.text = scoreText.text + tempDataList[i].score.ToString() + "\n";
+
+
+            int _finalTime = tempDataList[i].score;
+            Debug.Log($"Final time: {_finalTime}");
+
+            if (((_finalTime.ToString()).Length) <= 5)
+            {
+                scoreStr = _finalTime.ToString();
+                displayScore = (scoreStr[0] + scoreStr[1] + ":" + scoreStr[2] + scoreStr[3] + scoreStr[4]);
+
+            }
+
+            else if (((_finalTime.ToString()).Length) == 6)
+            {
+                scoreStr = _finalTime.ToString();
+                displayScore = (scoreStr[0] + ":" + scoreStr[1] + scoreStr[2] + ":" + scoreStr[3] + scoreStr[4] + scoreStr[5]);
+
+            }
+
+            //displayScore = DisplayTime(_finalTime);
+
+            scoreText.text = scoreText.text + displayScore + "\n";
         }
     }
+
+    /*
+    private string DisplayTime(int _time) {
+        string _timeOut;
+
+        if ((_time.ToString().Length) <= 5)
+        {
+            scoreStr = _time.ToString();
+            _timeOut = (scoreStr[0] + scoreStr[1] + ":" + scoreStr[2] + scoreStr[3] + scoreStr[4]);
+            
+        }
+
+        else if ((tempDataList[i].score.ToString().Length) == 6)
+        {
+            scoreStr = _time.ToString();
+            _timeOut = (scoreStr[0] + ":" + scoreStr[1] + scoreStr[2] + ":" + scoreStr[3] + scoreStr[4] + scoreStr[5]);
+            
+        }
+        return _timeOut;
+    }*/
 
 }

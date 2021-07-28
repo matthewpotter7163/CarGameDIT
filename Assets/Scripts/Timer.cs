@@ -23,6 +23,10 @@ public class Timer : MonoBehaviour
 
     public GameObject scoreEnter;
     public int finalTime;
+
+    private int minInt;
+    private int secInt;
+    private int milInt;
     
     
 
@@ -84,15 +88,15 @@ public class Timer : MonoBehaviour
 
                 float minFloat = Mathf.Floor((gameTime % 3600) / 60);
                 string minutes = minFloat.ToString("00");
-                int minInt = (int)Mathf.Round(minFloat);
+                minInt = (int)Mathf.Round(minFloat);
 
                 float secFloat = Mathf.Floor((gameTime % 60));
                 string seconds = secFloat.ToString("00");
-                int secInt = (int)Mathf.Round(secFloat);
+                secInt = (int)Mathf.Round(secFloat);
 
                 float milFloat = Mathf.Floor((gameTime * 1000) % 1000);
                 string milliseconds = milFloat.ToString("000");
-                int milInt = (int)Mathf.Round(milFloat);
+                milInt = (int)Mathf.Round(milFloat);
 
                 finalTime = int.Parse(minInt.ToString() + secInt.ToString() + milInt.ToString());
                 Debug.Log("finaltime:" + finalTime);
