@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,8 +20,8 @@ public class ScoreboardUI : MonoBehaviour
         scoreText = textComponents[6].GetComponent<TextMeshProUGUI>();
 
         Component[] buttonComponents = GetComponentsInChildren<Button>(); // store all buttons in an array
-        mainMenuButton = buttonComponents[0].GetComponent<Button>();
-        clearButton = buttonComponents[1].GetComponent<Button>();
+        //mainMenuButton = buttonComponents[0].GetComponent<Button>();
+        //clearButton = buttonComponents[1].GetComponent<Button>();
 
 
         sbDataManager = FindObjectOfType<ScoreboardDataManager>(); // set reference to dataManager

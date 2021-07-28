@@ -100,13 +100,13 @@ public class RandomiseMusic : MonoBehaviour
 
             while (nextSongReceive == true) 
             {
-                nextSongReceive = false;
+                
                 prevSong = audioSource.clip;
                 audioSource.clip = GetNextClip();
                 
                 audioSource.Play();
                 Debug.Log("next");
-                
+                nextSongReceive = !nextSongReceive;
             }
 
             if (prevSongReceive == true) 
