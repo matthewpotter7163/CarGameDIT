@@ -11,13 +11,14 @@ public class ScoreboardUI : MonoBehaviour
     public TextMeshProUGUI rankText, nameText, scoreText;
     public Button mainMenuButton, clearButton;
     private ScoreboardDataManager sbDataManager;
+    private string displayScore;
 
     private void Start()
     {
         Component[] textComponents = GetComponentsInChildren<TextMeshProUGUI>(); // store all text in an array
-        rankText = textComponents[4].GetComponent<TextMeshProUGUI>();
-        nameText = textComponents[5].GetComponent<TextMeshProUGUI>();
-        scoreText = textComponents[6].GetComponent<TextMeshProUGUI>();
+        rankText = textComponents[0].GetComponent<TextMeshProUGUI>();
+        nameText = textComponents[1].GetComponent<TextMeshProUGUI>();
+        scoreText = textComponents[2].GetComponent<TextMeshProUGUI>();
 
         Component[] buttonComponents = GetComponentsInChildren<Button>(); // store all buttons in an array
         //mainMenuButton = buttonComponents[0].GetComponent<Button>();
@@ -54,6 +55,7 @@ public class ScoreboardUI : MonoBehaviour
         {
             rankText.text = rankText.text + (i + 1).ToString() + "\n";
             nameText.text = nameText.text + tempDataList[i].name + "\n";
+            displayScore = 
             scoreText.text = scoreText.text + tempDataList[i].score.ToString() + "\n";
         }
     }

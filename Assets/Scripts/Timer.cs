@@ -22,6 +22,7 @@ public class Timer : MonoBehaviour
     bool timerStatusRoadster = false;
 
     public GameObject scoreEnter;
+    public int finalTime;
     
     
 
@@ -80,9 +81,22 @@ public class Timer : MonoBehaviour
             if (timerStatusR32 == true)
             {
                 gameTime += Time.deltaTime * timerSpeed;
-                string minutes = Mathf.Floor((gameTime % 3600) / 60).ToString("00");
-                string seconds = Mathf.Floor((gameTime % 60)).ToString("00");
-                string milliseconds = Mathf.Floor((gameTime * 1000) % 1000).ToString("000");
+
+                float minFloat = Mathf.Floor((gameTime % 3600) / 60);
+                string minutes = minFloat.ToString("00");
+                int minInt = (int)Mathf.Round(minFloat);
+
+                float secFloat = Mathf.Floor((gameTime % 60));
+                string seconds = secFloat.ToString("00");
+                int secInt = (int)Mathf.Round(secFloat);
+
+                float milFloat = Mathf.Floor((gameTime * 1000) % 1000);
+                string milliseconds = milFloat.ToString("000");
+                int milInt = (int)Mathf.Round(milFloat);
+
+                finalTime = int.Parse(minInt.ToString() + secInt.ToString() + milInt.ToString());
+                Debug.Log("finaltime:" + finalTime);
+
                 timerText.text = ($"{minutes}:{seconds}:{milliseconds}");
             }
 

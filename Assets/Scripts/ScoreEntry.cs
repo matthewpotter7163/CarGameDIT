@@ -13,7 +13,8 @@ public class ScoreEntry : MonoBehaviour
     public TMP_InputField nameInput;
     public Button submitButton;
     public GameObject ScoreEntryPanel;
-
+    private int playerTime;
+    public GameObject timerObject;
     
 
     // Start is called before the first frame update
@@ -33,17 +34,20 @@ public class ScoreEntry : MonoBehaviour
         ScoreEntryPanel = gameObject;
 
         ScoreEntryPanel.SetActive(false);
+
+        
     }
 
     void Update() {
 
+        playerTime = GameObject.Find("Timer").GetComponent<Timer>().finalTime;
         
     }
 
     void Submit()
     {
         // SaveData takes the players score and a file name e.g. "/filename.dat"
-        dataManager.SaveData(nameInput.text, 1 /* put player.Score here once score is made*/, "/scoreboard.data");
+        dataManager.SaveData(nameInput.text, playerTime , "/scoreboard.data");
         SceneManager.LoadScene("1ScoreboardScene", LoadSceneMode.Single);
     }
 }
