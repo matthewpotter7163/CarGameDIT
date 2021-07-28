@@ -6,16 +6,20 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public static bool timerStatus;
+    //public static bool timerStatus;
     public TextMeshProUGUI timerText;
     private float gameTime;
     public float timerSpeed = 1.0f; // for debug purposes
-    public GameObject car;
+    public CarControllerRoadster roadsterController;
+    public CarController r32Controller;
 
     public ArrayList lapTimes = new ArrayList();
 
     bool r32Active = false;
     bool roadsterActive = false;
+
+    bool timerStatusR32 = false;
+    bool timerStatusRoadster = false;
     
     
 
@@ -40,6 +44,8 @@ public class Timer : MonoBehaviour
             roadsterActive = true;
         }
 
+        //roadsterController = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>();
+        r32Controller = GameObject.Find("R32 GTR").GetComponent<CarController>();
     }
 
     // Update is called once per frame
@@ -47,20 +53,21 @@ public class Timer : MonoBehaviour
     {
 
         
-        bool timerStatus = GameObject.Find("R32 GTR").GetComponent<CarController>().timerOn;
+        timerStatusR32 = r32Controller.timerOn;
         //bool timerSplit = GameObject.Find("R32 GTR").GetComponent<CarController>().timerSplit;
 
-        //bool _timerStatusRoadster = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>().timerOnRoadster;
+        //timerStatusRoadster = roadsterController.timerOnRoadster;
         //bool _timerSplitRoadster = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>().timerSplitRoadster;
 
         //bool r32Active = GameObject.Find("R32 GTR").GetComponent<CarController>().r32IsActive;
         //bool roadsterActive = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>().roadsterIsActive;
+
         Debug.Log("r32 status:" + r32Active);
         if (r32Active == true)
         {
 
 
-            if (timerStatus == true)
+            if (timerStatusR32 == true)
             {
                 gameTime += Time.deltaTime * timerSpeed;
                 string minutes = Mathf.Floor((gameTime % 3600) / 60).ToString("00");
@@ -90,11 +97,12 @@ public class Timer : MonoBehaviour
             Debug.Log("r32 is not active");
         }
         
-        if (roadsterActive == true)
+        /*
+        else if (roadsterActive == true)
         {
 
 
-            if (timerStatus == true)
+            if (timerStatusRoadster == true)
             {
                 gameTime += Time.deltaTime * timerSpeed;
                 string minutes = Mathf.Floor((gameTime % 3600) / 60).ToString("00");
@@ -114,13 +122,14 @@ public class Timer : MonoBehaviour
                     Debug.Log(laptime);
                 }
 
-            }*/
+            }
         }
 
         else if (roadsterActive == false)
         {
             Debug.Log("roadster is not active");
         }
+        */
 
     }
 }

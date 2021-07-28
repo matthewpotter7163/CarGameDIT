@@ -114,7 +114,7 @@ public class RoadsterWheel : MonoBehaviour
         transform.localRotation = Quaternion.Euler(Vector3.up * wheelAngle);
 
         Debug.DrawRay(transform.position, -transform.up * springLength, Color.green);
-        speed.text = "Speed: " + (Math.Round((rb.velocity.magnitude * 3.6), MidpointRounding.ToEven).ToString()) + "km/h";
+        speed.text = (Math.Round((rb.velocity.magnitude * 3.6), MidpointRounding.ToEven).ToString());
         RPM.text = "RPM: " + engineRPM;
         Torque.text = "Torque: " + engineTorque;
 

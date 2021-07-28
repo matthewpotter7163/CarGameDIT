@@ -34,10 +34,10 @@ public class ScoreEntry : MonoBehaviour
     }
 
     void Update() {
-        if (Timer.timerStatus == false) {
+        /*if (Timer.timerStatus == false) {
             gameObject.SetActive(true);
             Time.timeScale = 0f;
-        }
+        }*/
     }
 
     void Submit()

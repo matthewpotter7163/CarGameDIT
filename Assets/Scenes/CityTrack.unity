@@ -636,7 +636,7 @@ MonoBehaviour:
   - {fileID: 840017068}
   wheelBase: 2.265
   rearTrack: 1.25
-  turnRadius: 4.6
+  turnRadius: 5
   steerInput: 0
   ackermannAngleLeft: 0
   ackermannAngleRight: 0
@@ -1304,18 +1304,18 @@ MonoBehaviour:
   wheelFR: 0
   wheelRL: 0
   wheelRR: 0
-  restLength: 1
-  springTravel: 1.5
-  springStiffness: 30000
-  damperStiffness: 3000
+  restLength: 0.55
+  springTravel: 1
+  springStiffness: 40000
+  damperStiffness: 4000
   Fh: 0
   Fv: 0
   verticalAxisInput: 0
   wheelRadius: 0
   steerAngle: 0
-  steerTime: 6
-  mMaxHorsePower: 276
-  mMaxPowerRpm: 6250
+  steerTime: 10
+  mMaxHorsePower: 116
+  mMaxPowerRpm: 6500
   mP1Ratio: 1
   mP2Ratio: 1
   mP3Ratio: 1
@@ -1482,7 +1482,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 401790909}
   timerSpeed: 1
-  car: {fileID: 34029491}
+  roadsterController: {fileID: 0}
+  r32Controller: {fileID: 0}
 --- !u!1 &424396615
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,18 +2168,18 @@ MonoBehaviour:
   wheelFR: 0
   wheelRL: 1
   wheelRR: 0
-  restLength: 1
-  springTravel: 1.5
-  springStiffness: 30000
-  damperStiffness: 3000
+  restLength: 0.55
+  springTravel: 1
+  springStiffness: 40000
+  damperStiffness: 4000
   Fh: 0
   Fv: 0
   verticalAxisInput: 0
   wheelRadius: 0
   steerAngle: 0
-  steerTime: 6
-  mMaxHorsePower: 276
-  mMaxPowerRpm: 6250
+  steerTime: 10
+  mMaxHorsePower: 116
+  mMaxPowerRpm: 6500
   mP1Ratio: 1
   mP2Ratio: 1
   mP3Ratio: 1
@@ -2432,18 +2433,18 @@ MonoBehaviour:
   wheelFR: 0
   wheelRL: 0
   wheelRR: 1
-  restLength: 1
-  springTravel: 1.5
-  springStiffness: 30000
-  damperStiffness: 3000
+  restLength: 0.55
+  springTravel: 1
+  springStiffness: 40000
+  damperStiffness: 4000
   Fh: 0
   Fv: 0
   verticalAxisInput: 0
   wheelRadius: 0
   steerAngle: 0
-  steerTime: 6
-  mMaxHorsePower: 276
-  mMaxPowerRpm: 6250
+  steerTime: 10
+  mMaxHorsePower: 116
+  mMaxPowerRpm: 6500
   mP1Ratio: 1
   mP2Ratio: 1
   mP3Ratio: 1
@@ -3404,18 +3405,18 @@ MonoBehaviour:
   wheelFR: 1
   wheelRL: 0
   wheelRR: 0
-  restLength: 1
-  springTravel: 1.5
-  springStiffness: 30000
-  damperStiffness: 3000
+  restLength: 0.55
+  springTravel: 1
+  springStiffness: 40000
+  damperStiffness: 4000
   Fh: 0
   Fv: 0
   verticalAxisInput: 0
   wheelRadius: 0
   steerAngle: 0
-  steerTime: 6
-  mMaxHorsePower: 276
-  mMaxPowerRpm: 6250
+  steerTime: 10
+  mMaxHorsePower: 116
+  mMaxPowerRpm: 6500
   mP1Ratio: 1
   mP2Ratio: 1
   mP3Ratio: 1
@@ -4827,7 +4828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1622468963}
   timerSpeed: 1
-  car: {fileID: 34029491}
+  roadsterController: {fileID: 0}
+  r32Controller: {fileID: 0}
 --- !u!1 &1679856363
 GameObject:
   m_ObjectHideFlags: 0
@@ -5313,7 +5315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {fileID: 1503625953}
   RPM: {fileID: 0}
-  Torque: {fileID: 296101620}
+  Torque: {fileID: 0}
   stopwatch: {fileID: 0}
   rb: {fileID: 0}
   wheelFL: 1
