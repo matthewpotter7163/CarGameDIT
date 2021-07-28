@@ -36,6 +36,8 @@ public class CarController : MonoBehaviour
 
     public bool r32IsActive = false;
 
+    public bool gameOver = false;
+
     private void Start()
     {
         lapTime = 0.0f;
@@ -95,7 +97,10 @@ public class CarController : MonoBehaviour
             if (checkpoint1 == true)
             {
                 timerOn = false;
+                gameOver = true;
+                Time.timeScale = 0f;
                 
+
                 //timerSplit = true;
 
             }

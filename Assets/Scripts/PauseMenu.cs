@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
     private void RestartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("CityTrack", LoadSceneMode.Single);
     }
 
     private void LoadMainMenu()

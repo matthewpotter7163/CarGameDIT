@@ -20,6 +20,8 @@ public class Timer : MonoBehaviour
 
     bool timerStatusR32 = false;
     bool timerStatusRoadster = false;
+
+    public GameObject scoreEnter;
     
     
 
@@ -33,6 +35,7 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
+        scoreEnter = GameObject.Find("ScoreEntryUI");
         int activeCar = CarSelection.carSelection;
 
         if (activeCar == 0)
@@ -52,7 +55,14 @@ public class Timer : MonoBehaviour
     void Update()
     {
 
-        
+        bool _gameOver = GameObject.Find("R32 GTR").GetComponent<CarController>().gameOver;
+        if (_gameOver == true)
+        {
+            scoreEnter.SetActive(true);
+
+        }
+
+
         timerStatusR32 = r32Controller.timerOn;
         //bool timerSplit = GameObject.Find("R32 GTR").GetComponent<CarController>().timerSplit;
 

@@ -14,6 +14,8 @@ public class ScoreEntry : MonoBehaviour
     public Button submitButton;
     public GameObject ScoreEntryPanel;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +36,8 @@ public class ScoreEntry : MonoBehaviour
     }
 
     void Update() {
-        /*if (Timer.timerStatus == false) {
-            gameObject.SetActive(true);
-            Time.timeScale = 0f;
-        }*/
+
+        
     }
 
     void Submit()
