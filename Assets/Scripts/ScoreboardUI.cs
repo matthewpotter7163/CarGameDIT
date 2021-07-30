@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,8 +12,11 @@ public class ScoreboardUI : MonoBehaviour
     public TextMeshProUGUI rankText, nameText, scoreText;
     public Button mainMenuButton, clearButton;
     private ScoreboardDataManager sbDataManager;
-    private string displayScore;
+    private string displayScore = "";
     private string scoreStr;
+
+    private ArrayList carList = new ArrayList();
+    private ArrayList TrackList = new ArrayList();
 
 
     private void Start()
@@ -32,8 +36,10 @@ public class ScoreboardUI : MonoBehaviour
         clearButton.onClick.AddListener(delegate { ClearScoreboard(); });
         SetupBoard();
 
-
-
+        carList.Add("R32");
+        carList.Add("Roadster");
+        TrackList.Add("Forest");
+        TrackList.Add("City");
 
         
     }
@@ -58,34 +64,57 @@ public class ScoreboardUI : MonoBehaviour
         List<ScoreboardEntry> tempDataList = new List<ScoreboardEntry>();
         tempDataList = sbDataManager.LoadData("/scoreboard.data");
 
+
+
         for (int i = 0; i < tempDataList.Count; i++)
         {
             rankText.text = rankText.text + (i + 1).ToString() + "\n";
-            nameText.text = nameText.text + tempDataList[i].name + "\n";
+
+            nameText.text = nameText.text + $"({TrackList[TrackSelection.trackSelection]})" + $"({carList[CarSelection.carSelection]})" + tempDataList[i].name + "\n";
+            
+
 
 
             int _finalTime = tempDataList[i].score;
             Debug.Log($"Final time: {_finalTime}");
 
-            if (((_finalTime.ToString()).Length) <= 5)
-            {
-                scoreStr = _finalTime.ToString();
-                displayScore = (scoreStr[0] + scoreStr[1] + ":" + scoreStr[2] + scoreStr[3] + scoreStr[4]);
+            int finalTimeLength = _finalTime.ToString().Length;
+            int missingZero = 7 - finalTimeLength;
+            string finalTimeZero;
+            string finalTimeString = _finalTime.ToString();
 
+            for (int j = 0; j < missingZero; j++) {
+                finalTimeZero = "0" + finalTimeString;
+                finalTimeString = finalTimeZero;
             }
 
-            else if (((_finalTime.ToString()).Length) == 6)
-            {
-                scoreStr = _finalTime.ToString();
-                displayScore = (scoreStr[0] + ":" + scoreStr[1] + scoreStr[2] + ":" + scoreStr[3] + scoreStr[4] + scoreStr[5]);
-
-            }
-
-            //displayScore = DisplayTime(_finalTime);
-
-            scoreText.text = scoreText.text + displayScore + "\n";
+            Debug.Log(finalTimeString);
+            displayScore = "";
+            displayScore = AddColons(finalTimeString);
+            Debug.Log(displayScore);
+            scoreText.text = displayScore + "\n";
         }
     }
+
+    string AddColons(string str) {
+        string retString;
+        retString = str[0] + str[1] + ":" + str[2] + str[3] + ":" + str[4] + str[5] + str[6];
+        return retString;
+    }
+
+    ArrayList GetTimeArray(int num)
+    {
+        List<int> listOfInts = new List<int>();
+        while (num > 0)
+        {
+            listOfInts.Add(num % 10);
+            num = num / 10;
+        }
+        listOfInts.Reverse();
+        ArrayList returnList = new ArrayList(listOfInts);
+        return returnList;
+    }
+
 
     /*
     private string DisplayTime(int _time) {

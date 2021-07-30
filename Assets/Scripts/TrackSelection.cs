@@ -10,6 +10,8 @@ public class TrackSelection : MonoBehaviour
     public Button cityButton;
     public Button forestButton;
     public Button backButton;
+
+    public static int trackSelection = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +37,13 @@ public class TrackSelection : MonoBehaviour
     private void goToForestScene()
     {
         SceneManager.LoadScene("ForestTrack", LoadSceneMode.Single);
+        trackSelection = 0;
     }
 
     private void goToCityScene()
     {
         SceneManager.LoadScene("CityTrack", LoadSceneMode.Single);
+        trackSelection = 1;
     }
 
 
