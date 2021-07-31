@@ -11,7 +11,7 @@ public class TrackSelection : MonoBehaviour
     public Button forestButton;
     public Button backButton;
 
-    public static int trackSelection = 2;
+    public static int trackSelection = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +23,8 @@ public class TrackSelection : MonoBehaviour
 
 
         // Add a listener for a click event for each button
-        cityButton.onClick.AddListener(delegate { Debug.Log("city"); goToCityScene(); });
-        forestButton.onClick.AddListener(delegate { Debug.Log("forest"); goToForestScene(); });
+        cityButton.onClick.AddListener(delegate { Debug.Log("city"); goToCityScene(); trackSelection = 1; });
+        forestButton.onClick.AddListener(delegate { Debug.Log("forest"); goToForestScene(); trackSelection = 0; });
         backButton.onClick.AddListener(delegate { Debug.Log("Back"); backToMenu(); });
 
     }
@@ -37,13 +37,13 @@ public class TrackSelection : MonoBehaviour
     private void goToForestScene()
     {
         SceneManager.LoadScene("ForestTrack", LoadSceneMode.Single);
-        trackSelection = 0;
+        
     }
 
     private void goToCityScene()
     {
         SceneManager.LoadScene("CityTrack", LoadSceneMode.Single);
-        trackSelection = 1;
+        
     }
 
 

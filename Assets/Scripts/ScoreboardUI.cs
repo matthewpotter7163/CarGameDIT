@@ -16,7 +16,7 @@ public class ScoreboardUI : MonoBehaviour
     private string scoreStr;
 
     private ArrayList carList = new ArrayList();
-    private ArrayList TrackList = new ArrayList();
+    private ArrayList trackList = new ArrayList();
 
 
     private void Start()
@@ -38,8 +38,8 @@ public class ScoreboardUI : MonoBehaviour
 
         carList.Add("R32");
         carList.Add("Roadster");
-        TrackList.Add("Forest");
-        TrackList.Add("City");
+        trackList.Add("Forest");
+        trackList.Add("City");
 
         
     }
@@ -70,7 +70,7 @@ public class ScoreboardUI : MonoBehaviour
         {
             rankText.text = rankText.text + (i + 1).ToString() + "\n";
 
-            nameText.text = nameText.text + $"({TrackList[TrackSelection.trackSelection]})" + $"({carList[CarSelection.carSelection]})" + tempDataList[i].name + "\n";
+            nameText.text = nameText.text /*+ $"({trackList[TrackSelection.trackSelection]})"*/ /*+ $"({carList[CarSelection.carSelection]})"*/ + tempDataList[i].name + "\n";
             
 
 
@@ -88,10 +88,9 @@ public class ScoreboardUI : MonoBehaviour
                 finalTimeString = finalTimeZero;
             }
 
-            Debug.Log(finalTimeString);
-            displayScore = "";
+            
+           
             displayScore = AddColons(finalTimeString);
-            Debug.Log(displayScore);
             scoreText.text = displayScore + "\n";
         }
     }
@@ -99,6 +98,7 @@ public class ScoreboardUI : MonoBehaviour
     string AddColons(string str) {
         string retString;
         retString = str[0] + str[1] + ":" + str[2] + str[3] + ":" + str[4] + str[5] + str[6];
+        Debug.Log(retString);
         return retString;
     }
 

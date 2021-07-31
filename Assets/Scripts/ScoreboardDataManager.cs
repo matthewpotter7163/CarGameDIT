@@ -32,7 +32,7 @@ public class ScoreboardDataManager : MonoBehaviour
         {
             for (int j = i + 1; j < dataList.Count; j++)
             {
-                if (dataList[j].score > dataList[i].score)
+                if (dataList[j].score < dataList[i].score)
                 {
                     temp = dataList[i];
                     dataList[i] = dataList[j];
