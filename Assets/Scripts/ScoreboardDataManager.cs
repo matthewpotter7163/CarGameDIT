@@ -2,14 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary; //Serialise data
 
 //Purpose: Open and Save data to file
 public class ScoreboardDataManager : MonoBehaviour
 {
-
+    // Take arguements (Name, Score, File name) and store in data file
     public void SaveData(string playerName, int playerScore, string fileName)
     {
         List<ScoreboardEntry> tempDataList = new List<ScoreboardEntry>();
@@ -23,7 +22,7 @@ public class ScoreboardDataManager : MonoBehaviour
         file.Close();
     }
 
-
+    // Take a list of objects and sort them in order of lowest time to highest time 
     private List<ScoreboardEntry> SortData(List<ScoreboardEntry> dataList)
     {
         ScoreboardEntry temp;
@@ -43,6 +42,7 @@ public class ScoreboardDataManager : MonoBehaviour
         return dataList;
     }
 
+    // Open data file and load the data into a list based on arguement fileName
     public List<ScoreboardEntry> LoadData(string fileName)
     {
         List<ScoreboardEntry> tempDataList = new List<ScoreboardEntry>();
@@ -58,7 +58,7 @@ public class ScoreboardDataManager : MonoBehaviour
         return tempDataList;
     }
 
-
+    // Delete data file based on fileName
     public void DeleteFile(string fileName)
     {
         string filePath = Application.persistentDataPath + fileName;
@@ -75,6 +75,7 @@ public class ScoreboardDataManager : MonoBehaviour
     }
 }
 
+// Get user Name and Score
 [Serializable]
 public class ScoreboardEntry
 {

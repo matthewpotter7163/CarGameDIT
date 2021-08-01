@@ -6,22 +6,29 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-// Display Scoreboard
+// Purpose: Takes data from ScoreboardDataManager and displays it through the UI system. Also can clear the data.
 public class ScoreboardUI : MonoBehaviour
 {
+    // Declare UI elements
     public TextMeshProUGUI rankText, nameText, scoreText;
     public Button mainMenuButton, clearButton;
+
+    // Declare a reference to the ScoreboardDataManager
     private ScoreboardDataManager sbDataManager;
+
+    //Declare variables to display the score
     private string displayScore = "";
     private string scoreStr;
 
+    //Declare arrays for cars and lists
     private ArrayList carList = new ArrayList();
     private ArrayList trackList = new ArrayList();
 
 
     private void Start()
     {
-        Component[] textComponents = GetComponentsInChildren<TextMeshProUGUI>(); // store all text in an array
+        Component[] textComponents = GetComponentsInChildren<TextMeshProUGUI>(); 
+        //get UI elements
         rankText = textComponents[0].GetComponent<TextMeshProUGUI>();
         nameText = textComponents[1].GetComponent<TextMeshProUGUI>();
         scoreText = textComponents[2].GetComponent<TextMeshProUGUI>();
@@ -32,6 +39,7 @@ public class ScoreboardUI : MonoBehaviour
 
 
         sbDataManager = FindObjectOfType<ScoreboardDataManager>(); // set reference to dataManager
+
         mainMenuButton.onClick.AddListener(delegate { CloseScoreboard(); });
         clearButton.onClick.AddListener(delegate { ClearScoreboard(); });
         SetupBoard();
@@ -44,18 +52,20 @@ public class ScoreboardUI : MonoBehaviour
         
     }
 
+    // Exit scoreboard and Load StartScene
     private void CloseScoreboard()
     {
         SceneManager.LoadScene("0StartScene", LoadSceneMode.Single);
     }
 
+    // Delete the file which data is stored in, so leaderboard is cleared, and setup board again
     private void ClearScoreboard()
     {
         sbDataManager.DeleteFile("/scoreboard.data");
         SetupBoard();
     }
 
-
+    // Initialise scoreboard with scores from file
     private void SetupBoard()
     {
         rankText.text = "";
@@ -70,7 +80,7 @@ public class ScoreboardUI : MonoBehaviour
         {
             rankText.text = rankText.text + (i + 1).ToString() + "\n";
 
-            nameText.text = nameText.text /*+ $"({trackList[TrackSelection.trackSelection]})"*/ /*+ $"({carList[CarSelection.carSelection]})"*/ + tempDataList[i].name + "\n";
+            nameText.text = nameText.text + tempDataList[i].name + "\n";
             
 
 
@@ -91,14 +101,15 @@ public class ScoreboardUI : MonoBehaviour
             
            
             displayScore = AddColons(finalTimeString);
-            scoreText.text = displayScore + "\n";
+            scoreText.text = scoreText.text + displayScore + "\n";
         }
     }
 
     string AddColons(string str) {
         string retString;
-        retString = str[0] + str[1] + ":" + str[2] + str[3] + ":" + str[4] + str[5] + str[6];
-        Debug.Log(retString);
+        Debug.Log(str);
+        retString = str[0] + "" +  str[1] + ":" + str[2] + str[3] + ":" + str[4] + str[5] + str[6];
+        Debug.Log(str[0] + "" + str[1]);
         return retString;
     }
 

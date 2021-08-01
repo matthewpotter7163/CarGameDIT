@@ -5,15 +5,20 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-//Purpose:  
+//Purpose: Get Information via UI from the user (Name & Score)
 public class ScoreEntry : MonoBehaviour
 {
+    // declare datamanager
     private ScoreboardDataManager dataManager;
+    // declare UI elements
     public TMP_Dropdown optionDropdown;
     public TMP_InputField nameInput;
     public Button submitButton;
     public GameObject ScoreEntryPanel;
+
+    //declare variable for time
     private int playerTime;
+    //declare object to find time on
     public GameObject timerObject;
     
 
@@ -38,6 +43,7 @@ public class ScoreEntry : MonoBehaviour
         
     }
 
+    //Update playerTime variable based on the the time displayed in timer element
     void Update() {
 
         playerTime = GameObject.Find("Timer").GetComponent<Timer>().finalTime;
