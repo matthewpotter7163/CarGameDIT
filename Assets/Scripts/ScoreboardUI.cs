@@ -73,6 +73,7 @@ public class ScoreboardUI : MonoBehaviour
         rankText.text = "";
         nameText.text = "";
         scoreText.text = "";
+        formText.text = "";
         List<ScoreboardEntry> tempDataList = new List<ScoreboardEntry>();
         tempDataList = sbDataManager.LoadData("/scoreboard.data");
 
@@ -104,7 +105,7 @@ public class ScoreboardUI : MonoBehaviour
            
             displayScore = AddColons(finalTimeString);
             scoreText.text = scoreText.text + displayScore + "\n";
-            formText.text = formText.text + tempDataList[i].formRoom;
+            formText.text = formText.text + tempDataList[i].formRoom + "\n";
         }
     }
 

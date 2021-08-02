@@ -45,8 +45,8 @@ public class StartMenu : MonoBehaviour
         quitButton = buttonComponents[2].GetComponent<Button>();
 
         playMusicButton = buttonComponents[3].GetComponent<Button>();
-        nextSongButton = buttonComponents[4].GetComponent<Button>();
-        previousSongButton = buttonComponents[5].GetComponent<Button>();
+        //nextSongButton = buttonComponents[4].GetComponent<Button>();
+        //previousSongButton = buttonComponents[5].GetComponent<Button>();
 
         // Add a listener for a click event for each button
         startButton.onClick.AddListener(delegate { Debug.Log("Start"); StartGame(); });
@@ -54,8 +54,8 @@ public class StartMenu : MonoBehaviour
         quitButton.onClick.AddListener(delegate { Debug.Log("Quit"); Application.Quit(); });
 
         playMusicButton.onClick.AddListener(delegate { Debug.Log("play"); pauseMusicSend = PlayMusic(); PlayPauseImage(); });
-        nextSongButton.onClick.AddListener(delegate { Debug.Log("next"); nextSongSend = NextSong(); });
-        previousSongButton.onClick.AddListener(delegate { Debug.Log("previous"); prevSongSend = PrevSong();});
+        //nextSongButton.onClick.AddListener(delegate { Debug.Log("next"); nextSongSend = NextSong(); });
+        //previousSongButton.onClick.AddListener(delegate { Debug.Log("previous"); prevSongSend = PrevSong();});
 
         playButtonImage = playMusicButton.image;
     }
