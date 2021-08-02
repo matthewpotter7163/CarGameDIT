@@ -4,17 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Threading;
 
+// Class to control forces acting on car object, control the steering angle and start/stop the timer
 public class CarController : MonoBehaviour
 {
-    //yes
-
+    
+    //List for wheel objects
     public Wheel[] wheels;
 
     [Header("Forces")]
-    private float Flong;
-    private float Ftraction;
-    private float Fdrag;
-    private float Frr;
+    private float Flong; // Declare Longitudinal force
+    private float Ftraction; // Declare Traction force
+    private float Fdrag; // Declare Drag force
+ 
 
     [Header("Car Specs")]
     public float wheelBase;  // in meters
@@ -22,22 +23,23 @@ public class CarController : MonoBehaviour
     public float turnRadius; // in meters 
 
     [Header("Inputs")]
-    public float steerInput;
+    public float steerInput; // Declare variable for steering input
 
-    [SerializeField] private float ackermannAngleLeft;
-    [SerializeField] private float ackermannAngleRight;
+    [SerializeField] private float ackermannAngleLeft; // Declare float for steering angle left wheel
+    [SerializeField] private float ackermannAngleRight; // Declare float for steering angle right wheel
 
-    public bool timerOn = false;
-    //public bool timerSplit = false;
-    public int lapCount = 0;
+    public bool timerOn = false; // Declare variable to turn on timer
 
-    private float lapTime = 0.0f;
-    private bool checkpoint1 = false;
+    //public int lapCount = 0; // Declare variable for lap count
 
-    public bool r32IsActive = false;
+    private float lapTime = 0.0f; // Declare float for lap time
 
-    public bool gameOver = false;
+    private bool checkpoint1 = false; // Declare bool to confirm whether checkpoint1 has been hit
+    public bool r32IsActive = false; // Decalre bool to confirm whether r32 is active
 
+    public bool gameOver = false; // Declare bool to confirm whether game is over 
+
+    // Check if r32 is enabled on start
     private void Start()
     {
         lapTime = 0.0f;
@@ -51,7 +53,7 @@ public class CarController : MonoBehaviour
     }
 
 
-
+    // Update for steering angle 
     void FixedUpdate()
     {
         steerInput = Input.GetAxis("Horizontal");
