@@ -9,11 +9,11 @@ using System.Runtime.Serialization.Formatters.Binary; //Serialise data
 public class ScoreboardDataManager : MonoBehaviour
 {
     // Take arguements (Name, Score, File name) and store in data file
-    public void SaveData(string playerName, int playerScore, string fileName)
+    public void SaveData(string playerName, int playerScore, string playerForm, string fileName)
     {
         List<ScoreboardEntry> tempDataList = new List<ScoreboardEntry>();
         tempDataList = LoadData(fileName);
-        tempDataList.Add(new ScoreboardEntry() { name = playerName, score = playerScore });
+        tempDataList.Add(new ScoreboardEntry() { name = playerName, score = playerScore, formRoom = playerForm });
         tempDataList = SortData(tempDataList);
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + fileName);
@@ -75,13 +75,13 @@ public class ScoreboardDataManager : MonoBehaviour
     }
 }
 
-// Get user Name and Score
+// Get user Name, score and user formRoom to sort by school class
 [Serializable]
 public class ScoreboardEntry
 {
 
     public string name;
     public int score;
-
+    public string formRoom;
 }
 

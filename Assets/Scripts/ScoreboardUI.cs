@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class ScoreboardUI : MonoBehaviour
 {
     // Declare UI elements
-    public TextMeshProUGUI rankText, nameText, scoreText;
+    public TextMeshProUGUI rankText, nameText, scoreText, formText;
     public Button mainMenuButton, clearButton;
 
     // Declare a reference to the ScoreboardDataManager
@@ -32,6 +32,8 @@ public class ScoreboardUI : MonoBehaviour
         rankText = textComponents[0].GetComponent<TextMeshProUGUI>();
         nameText = textComponents[1].GetComponent<TextMeshProUGUI>();
         scoreText = textComponents[2].GetComponent<TextMeshProUGUI>();
+        formText = textComponents[3].GetComponent<TextMeshProUGUI>();
+
 
         Component[] buttonComponents = GetComponentsInChildren<Button>(); // store all buttons in an array
         //mainMenuButton = buttonComponents[0].GetComponent<Button>();
@@ -102,6 +104,7 @@ public class ScoreboardUI : MonoBehaviour
            
             displayScore = AddColons(finalTimeString);
             scoreText.text = scoreText.text + displayScore + "\n";
+            formText.text = formText.text + tempDataList[i].formRoom;
         }
     }
 
