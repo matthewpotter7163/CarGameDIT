@@ -36,26 +36,26 @@ public class ScoreEntry : MonoBehaviour
     void Start()
     {
 
-
+        // Declare and set inactive error texts
         nameErrorText = GameObject.Find("NameErrorMessage");
         nameErrorText.SetActive(false);
         formErrorText = GameObject.Find("FormErrorMessage");
         formErrorText.SetActive(false);
 
-
+        // Declare Input fields
         Component[] inputTextComponents = GetComponentsInChildren<TMP_InputField>(); // Get the input text as a child
         nameInput = inputTextComponents[0].GetComponent<TMP_InputField>(); // Get user name input field
         formInput = inputTextComponents[1].GetComponent<TMP_InputField>(); // Get form room input field
-
+        // Declare buttons
         Component[] buttonComponents = GetComponentsInChildren<Button>(); 
         submitButton = buttonComponents[0].GetComponent<Button>(); // store all the buttons in an array
-
+        //add listeners for buttons
         submitButton.onClick.AddListener(delegate { Submit(); });
-
+        //Declare datamanager object
         dataManager = FindObjectOfType<ScoreboardDataManager>();
 
         ScoreEntryPanel = gameObject;
-
+        //disable score entry panel on start
         ScoreEntryPanel.SetActive(false);
 
 
@@ -68,13 +68,16 @@ public class ScoreEntry : MonoBehaviour
         
     }
 
+    // function for submitting score
     void Submit()
     {
 
-
+        // get name and form room for validation from input fields
         formVal = ValidateHomeroom(formInput.text);
         nameVal = CheckName(nameInput.text);
 
+        // show different text based on which inputs are valid/invalid
+        // if both are valid
         if (formVal == true && nameVal == true)
         {
             //SaveData takes the players score and a file name to save to e.g. "filename.dat"
@@ -82,18 +85,23 @@ public class ScoreEntry : MonoBehaviour
             SceneManager.LoadScene("1ScoreboardScene", LoadSceneMode.Single);
              
         }
+        // if form room is valid but name is not 
         else if (formVal == true && nameVal == false)
         {
             nameErrorText.SetActive(true);
             formErrorText.SetActive(false);
             Debug.Log("Invalid name");
         }
+
+        // if form isn't valid but name is 
         else if (formVal == false && nameVal == true)
         {
             formErrorText.SetActive(true);
             nameErrorText.SetActive(false);
             Debug.Log("Invalid homeroom");
         }
+
+        // if neither are valid
         else if (formVal == false && nameVal == false)
         {
             nameErrorText.SetActive(true);
@@ -102,11 +110,12 @@ public class ScoreEntry : MonoBehaviour
         }
     }
 
-
+    // Checking for valid homeroom input
     private bool ValidateHomeroom(string formInputVal) {
+        // declare bool for first letter validation
         bool firstLetterVal = false;
-        formInputVal = formInputVal.ToUpper();
-
+        formInputVal = formInputVal.ToUpper(); // set string to be uppercase for formatting
+        //check the first letter of the form room to make sure it matches with one of the houses, and make sure the length is within 4 characters
         if ((formInputVal[0] == 'M' || formInputVal[0] == 'B' || formInputVal[0] == 'P' || formInputVal[0] == 'J' || formInputVal[0] == 'B') && formInputVal.Length <= 4) {
             firstLetterVal = true;
         }
@@ -114,16 +123,13 @@ public class ScoreEntry : MonoBehaviour
         else {
             firstLetterVal = false;
         }
-
-        
-
         return firstLetterVal;
     }
 
     //Checking for a valid name input
     private bool CheckName(string playerName)
     {
-        bool isValid;
+        bool isValid; // declare bool for valid input 
         
 
         //Check that name input is empty or less than 12 characters long (Boundary check)
@@ -131,12 +137,13 @@ public class ScoreEntry : MonoBehaviour
         {
             isValid = true;
         }
+
         else
         {
             isValid = false;
         }
 
-        //If the name input is blank substitute it for a dash on the scoreboard to avoid confusion of user
+        //If player name is blank, it is not valid
         if (playerName == "")
         {
             isValid = false;

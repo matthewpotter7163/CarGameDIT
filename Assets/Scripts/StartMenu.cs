@@ -7,44 +7,42 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
+    // Declare buttons
     public Button startButton;
     public Button leaderboardButton;
     public Button quitButton;
     public Button playMusicButton;
     public Button nextSongButton;
     public Button previousSongButton;
-
+    // Declare bools for music controls
     private bool musicStatus;
     private bool pauseMusic;
     private bool playMusic;
     private bool nextSong;
     private bool prevSong;
-
+    // Declare bools to send to other classes
     public bool pauseMusicSend;
     public bool nextSongSend;
     public bool prevSongSend;
 
     
-    private Image playButtonImage;
+    private Image playButtonImage; // declare image to use for 
     public bool pauseImage = true; //true - show pause image, false - show play image
-    public Sprite[] playSprites;
+    public Sprite[] playSprites; // sprites for pause/play button
 
-    private void Awake()
-    {
-        
-    }
+
     // Start is called before the first frame update
     void Start()
     {
 
-
+        // Get button components for menu
         Component[] buttonComponents;
         buttonComponents = GetComponentsInChildren<Button>();
         startButton = buttonComponents[0].GetComponent<Button>();
         leaderboardButton = buttonComponents[1].GetComponent<Button>();
         quitButton = buttonComponents[2].GetComponent<Button>();
-
         playMusicButton = buttonComponents[3].GetComponent<Button>();
+        
         //nextSongButton = buttonComponents[4].GetComponent<Button>();
         //previousSongButton = buttonComponents[5].GetComponent<Button>();
 
@@ -52,20 +50,19 @@ public class StartMenu : MonoBehaviour
         startButton.onClick.AddListener(delegate { Debug.Log("Start"); StartGame(); });
         leaderboardButton.onClick.AddListener(delegate { Debug.Log("Leaderboard"); GoToLeaderboard(); });
         quitButton.onClick.AddListener(delegate { Debug.Log("Quit"); Application.Quit(); });
-
         playMusicButton.onClick.AddListener(delegate { Debug.Log("play"); pauseMusicSend = PlayMusic(); PlayPauseImage(); });
         //nextSongButton.onClick.AddListener(delegate { Debug.Log("next"); nextSongSend = NextSong(); });
         //previousSongButton.onClick.AddListener(delegate { Debug.Log("previous"); prevSongSend = PrevSong();});
 
-        playButtonImage = playMusicButton.image;
+        playButtonImage = playMusicButton.image; // Get image 
     }
-
+    // on update check if music is playing or not 
     private void Update()
     {
         musicStatus = GameObject.Find("MusicPlayer").GetComponent<AudioSource>().isPlaying;
         
     }
-
+    // Function to switch image to play or pause based on whether or not music is playing 
     private void PlayPauseImage() {
 
         pauseImage = !pauseImage;
@@ -78,19 +75,19 @@ public class StartMenu : MonoBehaviour
         else if (pauseImage == false)
         {
             playButtonImage.sprite = playSprites[1];
-        }
+        }                                                
     }
 
-    // Update is called once per frame
+    // load car selection screen
     private void StartGame()
     {
         SceneManager.LoadScene("CarSelection", LoadSceneMode.Single);
     }
-
+    // load leaderboard scene
     private void GoToLeaderboard() {
         SceneManager.LoadScene("1ScoreboardScene", LoadSceneMode.Single);
     }
-
+    // function for pausing/playing music based on whether or not music is playing
     private bool PlayMusic()
     {
 
@@ -109,7 +106,7 @@ public class StartMenu : MonoBehaviour
 
         return pauseMusic;
     }
-
+    /*
     private bool NextSong()
     {
         nextSong = true;
@@ -122,5 +119,5 @@ public class StartMenu : MonoBehaviour
         prevSong = true;
         return prevSong;
         
-    }
+    }*/
 }

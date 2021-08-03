@@ -5,9 +5,10 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-//Purpose:  
+//Purpose: Manage game pause menu to either resume, restart or go back to menu
 public class PauseMenu : MonoBehaviour
 {
+    // Declare buttons for each option
     public Button resumeButton;
     public Button restartButton;
     public Button mainMenuButton;
@@ -15,6 +16,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Find buttons in hierarchy and add to list
         Component[] buttonComponents;
         buttonComponents = GetComponentsInChildren<Button>(); // store all the buttons in an array
         resumeButton = buttonComponents[0].GetComponent<Button>(); // Get First Button
@@ -36,13 +38,13 @@ public class PauseMenu : MonoBehaviour
     private void RestartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("CityTrack", LoadSceneMode.Single);
+        SceneManager.LoadScene("CityTrack", LoadSceneMode.Single); // reload scene
     }
 
     private void LoadMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("0StartScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("0StartScene", LoadSceneMode.Single); // go to start scene
     }
 
 

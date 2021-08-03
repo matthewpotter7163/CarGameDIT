@@ -3,27 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+// Purpose: Script to get time of lap
 public class Timer : MonoBehaviour
 {
-    //public static bool timerStatus;
+    // declare timer text 
     public TextMeshProUGUI timerText;
+    // declare game time variable for timer to base on
     private float gameTime;
-    public float timerSpeed = 1.0f; // for debug purposes
+    public float timerSpeed = 1.0f; // declare time multiplier for debug purposes
+    // Declare controllers for both cars
     public CarControllerRoadster roadsterController;
     public CarController r32Controller;
 
-    public ArrayList lapTimes = new ArrayList();
+    //public ArrayList lapTimes = new ArrayList();
 
     bool r32Active = false;
     bool roadsterActive = false;
 
     bool timerStatusR32 = false;
     bool timerStatusRoadster = false;
-
+    // Declare game object to enter score into
     public GameObject scoreEnter;
+    // Declare variable for time at end of lap to share with other classes
     public int finalTime;
-
+    // Declare variables for parts of timer
     private int minInt;
     private int secInt;
     private int milInt;
@@ -41,14 +44,14 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        timerText = GetComponent<TextMeshProUGUI>();
-
-
+        timerText = GetComponent<TextMeshProUGUI>(); // Find timerText on awake
     }
 
     void Start()
     {
+        // find score entry object
         scoreEnter = GameObject.Find("ScoreEntryUI");
+        // find active car
         int activeCar = CarSelection.carSelection;
 
         if (activeCar == 0)
@@ -68,7 +71,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // if game is over, set score enter to true
         bool _gameOver = GameObject.Find("R32 GTR").GetComponent<CarController>().gameOver;
         if (_gameOver == true)
         {
@@ -78,10 +81,10 @@ public class Timer : MonoBehaviour
         timerStatusR32 = r32Controller.timerOn;
         //timerStatusRoadster = roadsterController.timerOnRoadster;
 
-        TimerStatus();
+        TimerStatus(); // Run function to get time
 
     }
-
+    // Function to get time 
     private void TimerStatus()
     {
 
@@ -92,23 +95,25 @@ public class Timer : MonoBehaviour
 
             if (timerStatusR32 || timerStatusRoadster)
             {
+                // game time = deltatime for gameplay purposes 
                 gameTime += Time.deltaTime * timerSpeed;
 
+                // Calculate minutes
                 float minFloat = Mathf.Floor((gameTime % 3600) / 60);
                 string minutes = minFloat.ToString("00");
                 minInt = (int)Mathf.Round(minFloat);
-
+                // Calculate Seconds
                 float secFloat = Mathf.Floor((gameTime % 60));
                 string seconds = secFloat.ToString("00");
                 secInt = (int)Mathf.Round(secFloat);
-
+                // Calculate Milliseconds
                 float milFloat = Mathf.Floor((gameTime * 1000) % 1000);
                 string milliseconds = milFloat.ToString("000");
                 milInt = (int)Mathf.Round(milFloat);
-
+                // Create final time by adding all of the part together
                 finalTime = int.Parse(minInt.ToString() + secInt.ToString() + milInt.ToString());
                 Debug.Log("finaltime:" + finalTime);
-
+                // Display text in timer on screen
                 timerText.text = ($"{minutes}:{seconds}:{milliseconds}");
             }
         }

@@ -21,6 +21,7 @@ public class Wheel : MonoBehaviour
     public bool wheelRL; // Rear Left wheel
     public bool wheelRR; // Rear Right wheel
 
+    // Declare variables for suspension 
     [Header("Suspension")]
     public float restLength;
     public float springTravel;
@@ -37,16 +38,20 @@ public class Wheel : MonoBehaviour
 
     private Vector3 suspensionForce;
     private Vector3 wheelVelocityLS; // Local Space
+
+    // Declare variables for forces
     [SerializeField] private float Fh; // Horizontal Force
     [SerializeField] private float Fv; // Vertical Force
     [SerializeField] private float verticalAxisInput;
 
+    // Declare variables for Wheel
     [Header("Wheel")]
     public float wheelRadius;
     private float wheelAngle;
     public float steerAngle;
     public float steerTime;
 
+    // Declare variables for the engine like torque and horsepower (note: not all of these are being used currently, but may be used in the future)
     [Header("Torque/HP")]
     public float mMaxHorsePower = 276;
     public float mMaxPowerRpm = 6250;
@@ -57,7 +62,6 @@ public class Wheel : MonoBehaviour
     public float mIdleThrottleFactor = 0.1f;
     public float mRedLineRpm = 7250;
     public float mRedLineThrottleFactor = 0.0f;
-
 
     private float mHpWattConvertingConstant = 745.699872f;
     private float mEngineMaxPower;

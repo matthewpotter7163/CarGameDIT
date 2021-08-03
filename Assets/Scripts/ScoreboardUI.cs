@@ -42,10 +42,11 @@ public class ScoreboardUI : MonoBehaviour
 
         sbDataManager = FindObjectOfType<ScoreboardDataManager>(); // set reference to dataManager
 
+        // Add listeners for button components to close and clear scoreboard
         mainMenuButton.onClick.AddListener(delegate { CloseScoreboard(); });
         clearButton.onClick.AddListener(delegate { ClearScoreboard(); });
         SetupBoard();
-
+        // add cars and tracks to lists 
         carList.Add("R32");
         carList.Add("Roadster");
         trackList.Add("Forest");
@@ -78,19 +79,18 @@ public class ScoreboardUI : MonoBehaviour
         tempDataList = sbDataManager.LoadData("/scoreboard.data");
 
 
-
+        // go through each data point in the list
         for (int i = 0; i < tempDataList.Count; i++)
         {
+            // set rank and name text
             rankText.text = rankText.text + (i + 1).ToString() + "\n";
-
             nameText.text = nameText.text + tempDataList[i].name + "\n";
-            
-
-
 
             int _finalTime = tempDataList[i].score;
+
             Debug.Log($"Final time: {_finalTime}");
 
+            // add zeroes to start of time for formatting based on initial length of time
             int finalTimeLength = _finalTime.ToString().Length;
             int missingZero = 7 - finalTimeLength;
             string finalTimeZero;
@@ -101,14 +101,14 @@ public class ScoreboardUI : MonoBehaviour
                 finalTimeString = finalTimeZero;
             }
 
-            
-           
+           // format by adding colons
             displayScore = AddColons(finalTimeString);
+            // set form and time text
             scoreText.text = scoreText.text + displayScore + "\n";
             formText.text = formText.text + tempDataList[i].formRoom + "\n";
         }
     }
-
+    // function to add colons to time string
     string AddColons(string str) {
         string retString;
         Debug.Log(str);
@@ -117,6 +117,7 @@ public class ScoreboardUI : MonoBehaviour
         return retString;
     }
 
+    /*
     ArrayList GetTimeArray(int num)
     {
         List<int> listOfInts = new List<int>();
@@ -129,7 +130,7 @@ public class ScoreboardUI : MonoBehaviour
         ArrayList returnList = new ArrayList(listOfInts);
         return returnList;
     }
-
+    */
 
     /*
     private string DisplayTime(int _time) {

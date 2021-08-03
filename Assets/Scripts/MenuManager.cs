@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-//Purpose:  
+//Purpose: to manage game pause menu
 public class MenuManager : MonoBehaviour
 {
-    public GameObject pauseMenu;
+    public GameObject pauseMenu; // Declare gameObject for pause menu
 
     // Start is called before the first frame update
     void Awake()

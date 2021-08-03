@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Threading;
 
-// Class to control forces acting on car object, control the steering angle and start/stop the timer
+// Purpose: Class to control forces acting on car object, control the steering angle and start/stop the timer
 public class CarController : MonoBehaviour
 {
     
@@ -56,7 +56,9 @@ public class CarController : MonoBehaviour
     // Update for steering angle 
     void FixedUpdate()
     {
-        steerInput = Input.GetAxis("Horizontal");
+        steerInput = Input.GetAxis("Horizontal"); // get input from left/right arrows
+
+        // calculate steering angle based on input, wheel base, turn radius and rear track. The angle is different for each wheel to make steering smooth
         if (steerInput > 0) // is turning right
         {
             ackermannAngleLeft = (Mathf.Rad2Deg * Mathf.Atan(wheelBase / (turnRadius + (rearTrack / 2)))) * steerInput;
@@ -69,12 +71,14 @@ public class CarController : MonoBehaviour
             ackermannAngleRight = (Mathf.Rad2Deg * Mathf.Atan(wheelBase / (turnRadius + (rearTrack / 2)))) * steerInput;
         }
 
+        // if no input, steering angle is 0
         else
         {
             ackermannAngleLeft = 0;
             ackermannAngleRight = 0;
         }
 
+        // Apply steering angle to front wheels only
         foreach (Wheel w in wheels)
         {
             if (w.wheelFL)
@@ -91,33 +95,31 @@ public class CarController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        // check if trigger is for timer
         if (other.CompareTag("TimerTrigger"))
         {
 
-
+            // if checkpoint 1 has been hit, lap is complete so stop timer
             if (checkpoint1 == true)
             {
-                timerOn = false;
-                gameOver = true;
-                Time.timeScale = 0f;
-                
-
-                //timerSplit = true;
+                timerOn = false; // stop timer
+                gameOver = true; // end game
+                Time.timeScale = 0f; // stop time
 
             }
 
+            // else checkpoint1 hasn't been hit, so lap is starting
             else
             {
-                timerOn = true;
-                checkpoint1 = false;
-                lapCount = 1;
+                timerOn = true; // start timer
+                checkpoint1 = false; 
+                
                 Debug.Log("timer on");
                 Debug.Log("lapCount");
             }
 
         }
-
+        // if car hits checkpoint1, set bool to true 
         if (other.CompareTag("Checkpoint1"))
         {
             checkpoint1 = true;
