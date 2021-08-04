@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//Purpose: Calculate forces to act on car and create suspension system
 public class Wheel : MonoBehaviour
 {
 
@@ -131,23 +132,23 @@ public class Wheel : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Create raycast at each wheel to act as suspension, based on transform, and suspension/wheel parameters
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
         {
+            // Calculations for suspension and forces
             lastLength = springLength;
             springLength = hit.distance - wheelRadius;
             springLength = Mathf.Clamp(springLength, minLength, maxLength);
             springVelocity = (lastLength - springLength) / Time.deltaTime;
             springForce = springStiffness * (restLength - springLength);
             damperForce = damperStiffness * springVelocity;
-
             suspensionForce = (springForce + damperForce) * transform.up;
-
             wheelVelocityLS = transform.InverseTransformDirection(rb.GetPointVelocity(hit.point));
-
+            // Get Throttle/Brake input
             verticalAxisInput = Input.GetAxis("Vertical");
-
+            // Get engine torque 
             engineTorqueFloat = GetEngineTorque();
-
+            // If throttle is pressed, calculate force and multiply by forward factor
             if (verticalAxisInput > 0)
             {
                 Fh = (springForce * engineTorqueFloat * verticalAxisInput) * fhMultiplicationFactor;
@@ -157,7 +158,7 @@ public class Wheel : MonoBehaviour
                     Fh = 0.0f;
                 }
             }
-
+            // If brake is pressed, calculate force and multiply by reverse factor
             else if (verticalAxisInput < 0)
             {
                 Fh = (springForce * engineTorqueFloat * verticalAxisInput) * fhMultiplicationFactorReverse;
@@ -166,10 +167,11 @@ public class Wheel : MonoBehaviour
             {
                 Fh = 0f;
             }
-
+            // Calculate vertical force based on wheel velocity and spring force
             Fv = wheelVelocityLS.x * springForce;
-
+            // Add force to rigid body to make car move
             rb.AddForceAtPosition(suspensionForce + (Fh * transform.forward) + (Fv * -transform.right), hit.point);
+            // Get wheel speed, make wheel rotate
             wheelSpeed = WheelRotationSpeed();
             wheelTransform.Rotate(0.0f, 0.0f, wheelSpeed, Space.Self);
         }
@@ -177,10 +179,9 @@ public class Wheel : MonoBehaviour
 
 
 
-    /// <summary>
-    /// Returns the current engine torque, based on the engine's current angular velocity of the engine and the throttle factor.
-    /// </summary>
-    /// <returns></returns>
+
+    
+    //Returns the current engine torque, based on the engine's current angular velocity of the engine and the throttle factor.
     public float GetEngineTorque()
     {
         // Engine Idle Throttle
@@ -207,7 +208,7 @@ public class Wheel : MonoBehaviour
         return maxEngineTorque * mThrottleFactor;
     }
 
-
+    // Calculates max engine torque
     public float GetMaxEngineTorque()
     {
         // Engine Torque Formula
@@ -218,7 +219,7 @@ public class Wheel : MonoBehaviour
         // P1..P3 = Constants
         return mP1 + mP2 * mAngularVelocity + mP3 * Mathf.Pow(mAngularVelocity, 2);
     }
-
+    // Calculates wheel speed based on car velocity
     private float WheelRotationSpeed()
     {
         float wheelRotSpeed;
