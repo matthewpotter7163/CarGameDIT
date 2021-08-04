@@ -84,40 +84,41 @@ public class Wheel : MonoBehaviour
     private float fhMultiplicationFactor = 0.03f; // Value to reduce overall horizontal force in the forward direction
     private float fhMultiplicationFactorReverse = 0.03f; // Value to reduce overall horizontal force in the backwards direction
 
-    public Transform wheelTransform;
-    [SerializeField] private float wheelSpeed;
+    // Declare variables for wheel spinning animation
+    public Transform wheelTransform; // Declare Transform for wheel model
+    [SerializeField] private float wheelSpeed; // Declare 
 
     
 
 
-
+    
     void Start()
     {
+        // On start get rigidbody
         rb = transform.root.GetComponent<Rigidbody>();
-
+        // set min and max suspension length
         minLength = restLength - springTravel;
         maxLength = restLength + springTravel;
-
+        // Calculations for torque and horsepower
         mEngineMaxPower = mMaxHorsePower * mHpWattConvertingConstant;
         mEngineMaxPowerAngularVelocity = (mMaxPowerRpm * RPMtoRadsValue);
         mP1 = mP1Ratio * (mEngineMaxPower / mEngineMaxPowerAngularVelocity);
         mP2 = mP2Ratio * (mEngineMaxPower / Mathf.Pow(mEngineMaxPowerAngularVelocity, 2));
         mP3 = -mP3Ratio * (mEngineMaxPower / Mathf.Pow(mEngineMaxPowerAngularVelocity, 3));
-
         mAngularVelocity = mIdleRpm * RPMtoRadsValue;
 
-        
-
-        
     }
 
 
     private void Update()
     {
+        // Get wheel angle from CarController script
         wheelAngle = Mathf.Lerp(wheelAngle, steerAngle, steerTime * Time.deltaTime);
+        // Get local rotation based on wheel angle 
         transform.localRotation = Quaternion.Euler(Vector3.up * wheelAngle);
-
+        // Draw raycast for debug purposes
         Debug.DrawRay(transform.position, -transform.up * springLength, Color.green);
+        // text for HUD
         speed.text = (Math.Round((rb.velocity.magnitude * 3.6), MidpointRounding.ToEven).ToString());
         RPM.text = "RPM: " + engineRPM;
         Torque.text = "Torque: " + engineTorque;
