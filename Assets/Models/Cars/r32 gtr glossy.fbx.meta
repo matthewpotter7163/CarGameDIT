@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fb0b09908e2348b4f835655c247b93dd
+guid: 02dc70a6b273f12449752bf9745a450f
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,53 +7,53 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Footpath
-    second: {fileID: 2100000, guid: 48de6945b66e946439a4452faf0d5b6d, type: 2}
+      name: Glass
+    second: {fileID: 2100000, guid: 53b754143c2018e479ebfdb63cbff06d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: d4b388165ecc5964b9b1f0fdb123ccb8, type: 2}
+      name: Grill
+    second: {fileID: 2100000, guid: 80c93045479723848bb71f75ceed9dea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Headlights
+    second: {fileID: 2100000, guid: 0f58d3b412d2bb7438dbe5f731bcfbd3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 4d0a1667cfac546408f89f498538e516, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.002
-    second: {fileID: 2100000, guid: 8bdc768f895f8eb4dad967ad103ca656, type: 2}
+    second: {fileID: 2100000, guid: f6f2dc573d833ba4fa7060c180feec12, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Red
-    second: {fileID: 2100000, guid: 0d72994ab9b0d3248992011d2ca2afe1, type: 2}
+      name: Tail lights
+    second: {fileID: 2100000, guid: 948c48f37f778f64884d05ff324ebc7a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Road
-    second: {fileID: 2100000, guid: 29303e80e1196c14883f003cfba62c21, type: 2}
+      name: Underside
+    second: {fileID: 2100000, guid: b47c0395271e809488cb04b1715da9b5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: RoadLines
-    second: {fileID: 2100000, guid: 120569f106c7eb14e836e19499d72603, type: 2}
+      name: Wheel
+    second: {fileID: 2100000, guid: e688be3e4ea932c4a8231f67018648bc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Roof
-    second: {fileID: 2100000, guid: b3143f6b6bf971f49bb91b95cebeca29, type: 2}
+      name: body
+    second: {fileID: 2100000, guid: 81381539fd6f5b1409e874f070c43ec1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Walls
-    second: {fileID: 2100000, guid: ddee7ed2dd798dd4a8165a91e17c140a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: White
-    second: {fileID: 2100000, guid: 07cc6bc40b6e02346bb9edeaef4c5829, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Window
-    second: {fileID: 2100000, guid: 25befdbae8e83cf45a4c7e623568b573, type: 2}
+      name: tire
+    second: {fileID: 2100000, guid: 07b9de074cc1d4347b0e9de249d4f84c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -86,7 +86,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
