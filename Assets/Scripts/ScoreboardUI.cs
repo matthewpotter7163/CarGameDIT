@@ -117,39 +117,5 @@ public class ScoreboardUI : MonoBehaviour
         return retString;
     }
 
-    /*
-    ArrayList GetTimeArray(int num)
-    {
-        List<int> listOfInts = new List<int>();
-        while (num > 0)
-        {
-            listOfInts.Add(num % 10);
-            num = num / 10;
-        }
-        listOfInts.Reverse();
-        ArrayList returnList = new ArrayList(listOfInts);
-        return returnList;
-    }
-    */
-
-    /*
-    private string DisplayTime(int _time) {
-        string _timeOut;
-
-        if ((_time.ToString().Length) <= 5)
-        {
-            scoreStr = _time.ToString();
-            _timeOut = (scoreStr[0] + scoreStr[1] + ":" + scoreStr[2] + scoreStr[3] + scoreStr[4]);
-            
-        }
-
-        else if ((tempDataList[i].score.ToString().Length) == 6)
-        {
-            scoreStr = _time.ToString();
-            _timeOut = (scoreStr[0] + ":" + scoreStr[1] + scoreStr[2] + ":" + scoreStr[3] + scoreStr[4] + scoreStr[5]);
-            
-        }
-        return _timeOut;
-    }*/
 
 }

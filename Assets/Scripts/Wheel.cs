@@ -88,6 +88,7 @@ public class Wheel : MonoBehaviour
     // Declare variables for wheel spinning animation
     public Transform wheelTransform; // Declare Transform for wheel model
     [SerializeField] private float wheelSpeed; // Declare 
+    private const float MaxSpeed = 251.0f;
 
     
 
@@ -153,7 +154,7 @@ public class Wheel : MonoBehaviour
             {
                 Fh = (springForce * engineTorqueFloat * verticalAxisInput) * fhMultiplicationFactor;
 
-                if ((rb.velocity.magnitude * 3.6) > 251.0f)
+                if ((rb.velocity.magnitude * 3.6) > MaxSpeed)
                 {
                     Fh = 0.0f;
                 }
@@ -202,8 +203,7 @@ public class Wheel : MonoBehaviour
         {
             maxEngineTorque = 0;
         }
-        //GUIDebugger.AddDebugLine("Max Engine Torque", maxEngineTorque);
-        //GUIDebugger.AddDebugLine("Throttle Factor", mThrottleFactor);
+
 
         return maxEngineTorque * mThrottleFactor;
     }

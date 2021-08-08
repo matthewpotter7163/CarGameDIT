@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-//Purpose: Get Information via UI from the user (Name & Score)
+//Purpose: Get Information via UI from the user (Name, Homeroom & Score)
 public class ScoreEntry : MonoBehaviour
 {
     // declare datamanager
@@ -115,8 +115,8 @@ public class ScoreEntry : MonoBehaviour
         // declare bool for first letter validation
         bool firstLetterVal = false;
         formInputVal = formInputVal.ToUpper(); // set string to be uppercase for formatting
-        //check the first letter of the form room to make sure it matches with one of the houses, and make sure the length is within 4 characters
-        if ((formInputVal[0] == 'M' || formInputVal[0] == 'B' || formInputVal[0] == 'P' || formInputVal[0] == 'J' || formInputVal[0] == 'B') && formInputVal.Length <= 4) {
+        //check the first letter of the form room to make sure it matches with one of the houses, and make sure the length is within 4 characters (based on school homeroom format)
+        if ((formInputVal[0] == 'M' || formInputVal[0] == 'B' || formInputVal[0] == 'P' || formInputVal[0] == 'J' || formInputVal[0] == 'B') && formInputVal.Length <= 4) { //Add constants for lengths
             firstLetterVal = true;
         }
 

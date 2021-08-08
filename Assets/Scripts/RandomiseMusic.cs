@@ -24,6 +24,7 @@ public class RandomiseMusic : MonoBehaviour
     private Button nextButton;
     private Button prevButton;
     */
+
     private AudioClip currentSong; // Declare audio clip for currently play song
     private StartMenu startMenu; // Declare start menu to get pause/play
 

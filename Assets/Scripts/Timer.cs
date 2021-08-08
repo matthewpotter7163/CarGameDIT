@@ -12,16 +12,16 @@ public class Timer : MonoBehaviour
     private float gameTime;
     public float timerSpeed = 1.0f; // declare time multiplier for debug purposes
     // Declare controllers for both cars
-    public CarControllerRoadster roadsterController;
+    
     public CarController r32Controller;
 
     //public ArrayList lapTimes = new ArrayList();
 
     bool r32Active = false;
-    bool roadsterActive = false;
+    
 
     bool timerStatusR32 = false;
-    bool timerStatusRoadster = false;
+    
     // Declare game object to enter score into
     public GameObject scoreEnter;
     // Declare variable for time at end of lap to share with other classes
@@ -58,11 +58,11 @@ public class Timer : MonoBehaviour
         {
             r32Active = true;
         }
-
+        /*
         else if (activeCar == 1)
         {
             roadsterActive = true;
-        }
+        }*/
 
         //roadsterController = GameObject.Find("Roadster").GetComponent<CarControllerRoadster>();
         r32Controller = GameObject.Find("R32 GTR").GetComponent<CarController>();
@@ -89,11 +89,11 @@ public class Timer : MonoBehaviour
     {
 
         
-        if (r32Active || roadsterActive)
+        if (r32Active )
         {
 
 
-            if (timerStatusR32 || timerStatusRoadster)
+            if (timerStatusR32 )
             {
                 // game time = deltatime for gameplay purposes 
                 gameTime += Time.deltaTime * timerSpeed;

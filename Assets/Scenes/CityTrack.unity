@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
+  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1619,7 +1619,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 401790909}
   timerSpeed: 1
-  roadsterController: {fileID: 0}
   r32Controller: {fileID: 0}
   scoreEnter: {fileID: 0}
   finalTime: 0
@@ -3207,7 +3206,7 @@ MonoBehaviour:
   - {fileID: 34029491}
   - {fileID: 281911448}
   Cameras:
-  - {fileID: 607889173}
+  - {fileID: 1920112348}
   - {fileID: 1383928624}
   carSelectionLoad: 1
 --- !u!4 &900573826
@@ -5574,7 +5573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1618579830
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5807,7 +5806,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1622468963}
   timerSpeed: 1
-  roadsterController: {fileID: 0}
   r32Controller: {fileID: 0}
   scoreEnter: {fileID: 0}
   finalTime: 0

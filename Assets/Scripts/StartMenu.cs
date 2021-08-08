@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+//Purpose: Display start options (Start Game, Scoreboard, Exit)
 public class StartMenu : MonoBehaviour
 {
     // Declare buttons
@@ -35,7 +36,7 @@ public class StartMenu : MonoBehaviour
     void Start()
     {
 
-        // Get button components for menu
+        // Initialise button components for menu
         Component[] buttonComponents;
         buttonComponents = GetComponentsInChildren<Button>();
         startButton = buttonComponents[0].GetComponent<Button>();
@@ -106,6 +107,7 @@ public class StartMenu : MonoBehaviour
 
         return pauseMusic;
     }
+
     /*
     private bool NextSong()
     {
